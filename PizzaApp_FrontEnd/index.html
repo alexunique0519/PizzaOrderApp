@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Pizza Order</title>
+        <link rel="icon" href="image/pizza.png" type="image/png" sizes="32x32">
+        <link href="style/site.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular-route.min.js"></script>
+        <!-- Load app main script -->
+        <script src="script/app.js"></script>
+        <script src="script/validation.js"></script>
+   </head>
+
+    <body ng-app = "PizzaOrderApp" ng-controller="pizzaOrderController">
+        <nav class = "navbar navbar-default" style="background-color: #FF9933">
+        <div class="container-fluid ">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" aria-expanded="false">
+                <span class="glyphicon glyphicon-chevron-down"></span>
+              </button>
+              <a class="navbar-brand" href="#" >Pizza Order</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="#" >Home</a></li>
+                </ul>
+            </div>
+        </div>
+        </nav>
+    
+        <form > 
+            <div class="row">
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-5 panel panel-default" id="panel">
+                    <div class="panel-heading">
+                        <h4 class="text-center">Customer Information</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label class="control-label col-sm-4 form-label" for="customerName" >User Name</label>
+                            <div class="col-sm-8" >
+                                <input class="form-control" id="customerName" type="text" />
+                                <span id="nameError" class="hidden"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4 form-label" for="postalCode" >Postal Code</label>
+                            <div class="col-sm-8" >
+                                <input class="form-control" type="text" id="postalCode"/>
+                                <span id="postalCodeError" ></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4 form-label" for="locaiton" >Province</label>
+                            <div class="col-sm-8" >
+                                <select  class="form-control " id="province">
+                                  <option value="">Select Province</option>
+                                  <option value="Ontario">Ontario</option>
+                                  <option value="Quebec">Quebec</option>
+                                  <option value="Manitoba">Manitoba</option>
+                                  <option value="Saskatchewan">Saskatchewan</option>
+                                </select>
+                                <span id="provinceError" class="hidden"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4 form-label" for="city" >City</label>
+                            <div class="col-sm-8" >
+                                <input class="form-control" type="text" id="city"/>
+                                <span id="cityError" class="hidden"></span>
+                            </div>
+                        </div>
+                         <div class="form-group">
+                            <label class="control-label col-sm-4 form-label" for="telephoneNumber" >Phone Number</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="text" id="telephoneNumber"/>
+                                <span id="telephoneNumberError" class="hidden"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-4 form-label" for="email" >Email</label>
+                            <div class="col-sm-8" >
+                                <input class="form-control" type="text" id="email"/>
+                                <span id="emailError" class="hidden"></span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <!--<div class="col-md-4">
+                </div>
+            </div>
+            
+             <div class="row">
+                <div class="col-md-4">
+                </div>-->
+                <div class="col-md-5 panel panel-default" id="panel">
+                    <div class="panel-heading">
+                        <h4 class="text-center">Order Information</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label for="PizzaSize" class="control-label col-sm-4 form-label" >Pizza Size</label>               
+                            <div class="col-sm-8">
+                                <select id="pizzaSize" class="form-control"  >
+                                   <option value="">Select Size</option>
+                                   <option value="small">Small</option>
+                                   <option value="medium">Medium</option>
+                                   <option value="large">Large</option>
+                                   <option value="X-large">Extra Large</option>
+                                </select>
+                                <span id="pizzaSizeError" class="hidden"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="control-label col-sm-4 form-label" >Toppings</label>             
+                            <div class="col-sm-8 " >
+                                <div class="form-control" id="topping" >
+                                    <div >
+                                        <label class="checkbox-inline col-sm-6"> 
+                                            <input  type="checkbox" name="pizzaToppings" value="pepperoni">Pepperoni
+                                        </label>
+                                        <label class="checkbox-inline"> 
+                                            <input  type="checkbox" name="pizzaToppings" value="baconStrips">Bacon Strips
+                                        </label>
+                                    </div>
+                                    <div >
+                                        <label class="checkbox-inline col-sm-6"> 
+                                            <input type="checkbox" name="pizzaToppings" value="chicken">Chicken
+                                        </label>
+                                        <label class="checkbox-inline"> 
+                                            <input type="checkbox" name="pizzaToppings" value="groundBeef">Ground Beef
+                                        </label>
+                                    </div>
+                                    <div >
+                                        <label class="checkbox-inline col-sm-6"> 
+                                            <input class="" type="checkbox" name="pizzaToppings" value="broccoli">Broccoli
+                                        </label>
+                                           <label class="checkbox-inline"> 
+                                            <input class="" type="checkbox" name="pizzaToppings" value="grilledZucchini">Grilled Zucchini
+                                        </label>
+                                        
+                                    </div>
+                                    <div >
+                                        <label class="checkbox-inline col-sm-6"> 
+                                            <input class="" type="checkbox" name="pizzaToppings" value="greenPepper">Green Pepper
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" name="pizzaToppings" value="mushRoom">Mushroom
+                                        </label>
+                                    </div>
+                                    <div >
+                                        <label class="checkbox-inline col-sm-6"> 
+                                            <input class="" type="checkbox" name="pizzaToppings" value="cheeseBlend">Cheese Blend
+                                        </label>
+                                        <label class="checkbox-inline "> 
+                                            <input class="" type="checkbox" name="pizzaToppings" value="extraCheese">Extra Cheese
+                                        </label>
+                                    </div>
+                                    <div >
+                                        <label class="checkbox-inline col-sm-6" style="padding-right: 0px;"> 
+                                            <input class="" type="checkbox" name="pizzaToppings" value="parmesanCheese">Parmesan Cheese
+                                        </label>
+                                        <label class="checkbox-inline "> 
+                                            <input class="" type="checkbox" name="pizzaToppings" value="cheese">Cheese
+                                        </label>
+                                        
+                                    </div>
+                                    
+                                </div>
+                                
+                                <span id="toppingsError" class="hidden"></span>
+                            </div>
+                        </div>
+                    
+                        <div class="form-group">
+                            <label for="crustType" class="control-label col-sm-4 form-label">Crust Types</label>               
+                            <div class="col-sm-8" >
+                                <select id="crustType" class="form-control" >
+                                  <option value="">Select Crust Type</option>  
+                                  <option value="hand-tossed">hand-tossed</option>
+                                  <option value="pan">pan</option>
+                                  <option value="stuffed">stuffed</option>
+                                  <option value="thin">thin</option>
+                                </select>
+                                <span id="crustTypeError" class="hidden"></span>
+                            </div>
+                        </div>
+                    
+                    </div>
+                </div>
+                <div class="col-md-1">
+                </div>
+            </div>
+                        
+            <div class="row">
+                <div class="col-md-5">
+                </div>
+                <div class="col-md-2"  >
+                    <input type="button" id="submit" value="submit" class="btn btn-primary btn-lg btn-block" ng-click="onSubmit()"/>
+                </div>
+                <div class="col-md-5">
+                </div>
+
+            </div>
+            
+        </form>
+        
+        <div class="row hidden" id="resultArea"  >
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4 well">
+                <div class="alert alert-success " role="alert">
+                    <span id="message" ></span>
+                </div>
+                
+                <table class="table table-bordered" >
+                <thead>
+                    <tr>
+                        <th>
+                            Item
+                        </th>
+                        <th>
+                            Quantity
+                        </th>
+                        <th>
+                            cost
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in OrderedItems">
+                        <td>{{item.itemName}}</td>
+                        <td>{{item.quantity}}</td>
+                        <td>{{item.cost}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="row">
+                <p class="pull-right" id="subTotal">SubTotal: {{subTotal}}</p>
+            </div>
+            <div class="row">
+                <p class="pull-right" id="total">Total: {{totalCost}}(Tax included)</p>
+            </div>
+            <div class="col-md-4">
+            </div>        
+        </div>
+       
+        
+    </body>
+
+
+</html>

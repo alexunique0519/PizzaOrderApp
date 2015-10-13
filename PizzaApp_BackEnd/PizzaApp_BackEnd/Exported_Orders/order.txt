@@ -1,0 +1,10 @@
+2015-10-09 1:15:37 PM
+Customer Name : fred
+Postal Code: n2c 4g4
+Province :Ontario
+City: kitchener
+Phone Number :5192223333
+Email :fred@conestogac.on.ca
+Pizza Siza: large
+Toppings: chicken,groundBeef,broccoli,grilledZucchini,greenPepper,mushRoom,cheeseBlend,extraCheese,
+Crust Type: stuffed
