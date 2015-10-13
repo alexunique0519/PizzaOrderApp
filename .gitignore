@@ -1,2 +1,4 @@
 #all the files in package folder*
 packages/*
+*.dll
+*.nupkg
